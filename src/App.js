@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { inputFields } from "./formInputs";
 
-function App() {
+const App = () => {
+  const [inputs, setInputs] = useState({
+    title: "",
+    description: "",
+    author: "",
+    gender: "",
+  });
+
+  const handleChange = (e) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <center>
+      <h1>{inputs.gender}</h1>
+      <div>
+        {inputFields.map((data, index) => {
+          const { lable, name, type, placeholder, dropdown, list } = data;
+          return (
+            <div key={index}>
+              <label htmlFor="">{lable}</label>
+              {dropdown === true ? (
+                <select
+                  name={name}
+                  value={inputs[name]}
+                  onChange={handleChange}
+                >
+                  {list.map((listData, index) => {
+                    const { name, value } = listData;
+                    return (
+                      <option value={value} key={index}>
+                        {name}
+                      </option>
+                    );
+                  })}
+                </select>
+              ) : (
+                <input
+                  type={type}
+                  value={inputs[name]}
+                  name={name}
+                  placeholder={placeholder}
+                  onChange={handleChange}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </center>
   );
-}
+};
 
 export default App;
