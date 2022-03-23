@@ -1,9 +1,11 @@
 import React from "react";
-const Card = ({ img, name, position }) => {
+const Card = ({ image, title, description }) => {
   return (
-    <div class="grid-item card">
+    <div 
+    // className="grid-item card"
+    >
       <img
-        src={img}
+        src={image}
         alt="Avatar"
         style={{
           width: "100%",
@@ -11,11 +13,11 @@ const Card = ({ img, name, position }) => {
           objectFit: "cover",
         }}
       />
-      <div class="container">
+      <div className="container">
         <h4>
-          <b>{name}</b>
+          <b>{title}</b>
         </h4>
-        <p>{position}</p>
+        <p>{description}</p>
       </div>
     </div>
   );
