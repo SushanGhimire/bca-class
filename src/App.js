@@ -1,9 +1,11 @@
 import Blogs from "./component/Blogs";
+import Form from "./component/Form";
 
 const App = () => {
   return (
     <div>
-      <Blogs />
+      {/* <Blogs /> */}
+      <Form />
     </div>
   );
 };
