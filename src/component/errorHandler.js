@@ -11,6 +11,12 @@ export const errorHandler = (property, value) => {
     } else {
       return "";
     }
+  } else if (property === "author") {
+    if (value === "") {
+      return "Author is required";
+    } else {
+      return "";
+    }
   } else {
     return "";
   }

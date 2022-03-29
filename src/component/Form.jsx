@@ -1,7 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { errorHandler } from "./errorHandler";
 import { inputFields } from "./formInputs";
-const Form = () => {
+const Form = ({ fetchBlogData }) => {
   const [inputs, setInputs] = useState({
     title: "",
     description: "",
@@ -33,7 +34,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validation = ["title", "description", "gender"];
+    const validation = ["title", "description", "author"];
     const error = { ...errors };
 
     let submitForm = true;
@@ -46,7 +47,20 @@ const Form = () => {
       }
     });
     if (submitForm) {
-      alert("success");
+      const { title, description, author } = inputs;
+      const data = {
+        title,
+        description,
+        author,
+      };
+      axios
+        .post("http://localhost:3001/blogs/", data)
+        .then((res) => {
+          fetchBlogData();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
     setErros(error);

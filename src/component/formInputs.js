@@ -27,10 +27,10 @@ export const inputFields = [
     type: "text",
     placeholder: "Enter author",
   },
-  {
-    lable: "Gender",
-    dropdown: true,
-    list: gender,
-    name: "gender",
-  },
+  // {
+  //   lable: "Gender",
+  //   dropdown: true,
+  //   list: gender,
+  //   name: "gender",
+  // },
 ];

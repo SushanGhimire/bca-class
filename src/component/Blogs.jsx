@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Card from "./Card";
-const Blogs = () => {
-  const [blogLists, setBloglists] = useState([]);
-  const fetchBlogData = () => {
-    axios
-      .get("https://blog-site-srijan113.herokuapp.com/blog/")
-      .then((response) => {
-        setBloglists(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
-  useEffect(() => {
-    fetchBlogData();
-  }, []);
+const Blogs = ({ blogLists }) => {
   return (
     <div className="container">
       <div className="grid-container">
         {blogLists.map((data, index) => {
+          const { title, description, author } = data;
           return (
-            <div className="grid-item card">
-              {data.active && <Card key={index} {...data} />}
-            </div>
+            <Card
+              key={index}
+              title={title}
+              description={description}
+              author={author}
+            />
           );
         })}
       </div>

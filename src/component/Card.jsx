@@ -1,10 +1,10 @@
 import React from "react";
-const Card = ({ image, title, description }) => {
+const Card = ({ title, description, author }) => {
   return (
-    <div 
+    <div
     // className="grid-item card"
     >
-      <img
+      {/* <img
         src={image}
         alt="Avatar"
         style={{
@@ -12,12 +12,13 @@ const Card = ({ image, title, description }) => {
           height: "200px",
           objectFit: "cover",
         }}
-      />
+      /> */}
       <div className="container">
         <h4>
           <b>{title}</b>
         </h4>
         <p>{description}</p>
+        <p>{author}</p>
       </div>
     </div>
   );
